@@ -25,10 +25,10 @@
 body {
   color: $sidebar-text-color;
   background-color: $sidebar-bg-color;
-  background-image: linear-gradient(
-    to bottom,
-    lighten($sidebar-bg-color, 7%),
-    darken($sidebar-bg-color, 7%));
+  // background-image: linear-gradient(
+  //   to bottom,
+  //   lighten($sidebar-bg-color, 7%),
+  //   darken($sidebar-bg-color, 7%));
   display: flex;
   flex-direction: column;
   min-width: 100vw;
@@ -110,7 +110,7 @@ body {
 
   // Bigger title
   .site-title {
-    font-size: 3.25rem;
+    font-size: 3.00rem;
   }
 
   // Show secondary nav content + lead
@@ -131,6 +131,15 @@ body {
   }
 }
 
+// Show smaller Avatar only on home page
+#headshot {
+  display: none;
+}
+.home #headshot {
+  display: inline;
+  max-width: 50%;
+  border-radius: 50%;
+}
 
 /* -----------------------------------------------------------
   Tablet / Desktop view
@@ -152,17 +161,25 @@ body {
   /* Undo mobile CSS */
 
   #sidebar, .home #sidebar {
-    width: $sidebar-width;
     text-align: left;
+    width: $sidebar-width;
 
     > *:last-child {
       margin-bottom: 0;
+    }
+
+    // Avatar Full-Size
+    #headshot {
+      display: block;
+      margin: 1em auto;
+      max-width: 100%;
+      border-radius: 50%;
     }
   }
 
   #sidebar {
     .site-title {
-      font-size: 3.25rem;
+      font-size: 3.00rem;
       .back-arrow { display: none; }
     }
 
@@ -173,6 +190,7 @@ body {
     header ~ nav {
       display: flex;
     }
+
   }
 
   .index #sidebar { margin-bottom: 0; }
@@ -248,12 +266,12 @@ body {
 #sidebar-icon-links {
   max-width: 100%;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 1rem;
 
   @media (min-width: $large-breakpoint) {
     margin-left: -0.25em;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 }
 
